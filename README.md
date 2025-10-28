@@ -1,28 +1,65 @@
-## Qué hay que hacer
+## Ramas del proyecto
+
+- [Rama base sin cambios (main)](https://github.com/Loisinho/klikin-contact-list-test/tree/main)
+- [Rama que contiene el desarrollo (develop)](https://github.com/Loisinho/klikin-contact-list-test/tree/develop)
+
+## Project Setup
+
+```sh
+nvm use
+```
+
+```sh
+npm install
+```
+
+### Compile and Hot-Reload for Development
+
+```sh
+npm run serve
+```
+
+### Compile and Minify for Production
+
+```sh
+npm run build
+```
+
+### Lint
+
+```sh
+npm run lint
+```
+
+## Desarrollo
 Crear una aplicación básica de gestión de contactos.
 
-- importar el array inicial de contactos de `./assets/contacts.json`
-- pasar contactos al componente de ContactList como una propiedad.
-- mostrar listado de usuarios en su totalidad
-- ordenar inicialmente los contactos por el key `lastname` de forma ascendente
-- añadir un campo de búsqueda (input text) para filtrar el listado de contactos por `name`, `lastname`, `email` y `phone`
-- iniciar la app con el campo de búsqueda en autofocus
-- implementar la creación y actualización de contactos nuevos (validar el campo `email`)
-- los campos `phone` y `email` serán un array que podrá contener N items
+**Servicio para obtener los contactos:**
+- [ ] Importar el array inicial de contactos de `./assets/contacts.json`.
+- [ ] Pasar contactos al componente de ContactList como una propiedad.
+**Visualización de los contactos:**
+- [ ] Mostrar listado de usuarios en su totalidad.
+- [ ] Ordenar inicialmente los contactos por el key `lastname` de forma ascendente.
+**Buscador:**
+- [ ] Añadir un campo de búsqueda (input text) para filtrar el listado de contactos por `name`, `lastname`, `email` y `phone`.
+- [ ] Iniciar la app con el campo de búsqueda en autofocus.
+**Crear y editar contactos:**
+- [ ] Implementar la creación y actualización de contactos nuevos (validar el campo `email`).
+- [ ] Los campos `phone` y `email` serán un array que podrá contener N items.
 
-## Qué vamos a valorar
-- limpieza del código y organización
-- el uso de un naming claro y descriptivo en las variables
-- implementar un layout con criterio en lo referente a UX
-- uso de sass/stylus/less
-- seguir la guía de estilo `recomended` de VueJS
-- uso de mixins de ser necesario
-- el uso de algún `template functional`
-- la creación de componentes de la forma más reutilizable posible
-- tests unitarios
-- tests End-to-End
+## Qué se va a valorar
+- Limpieza del código y organización.
+- El uso de un naming claro y descriptivo en las variables.
+- Implementar un layout con criterio en lo referente a UX.
+- Uso de sass/stylus/less.
+- Seguir la guía de estilo `recomended` de VueJS.
+- Uso de mixins de ser necesario.
+- El uso de algún `template functional`.
+- La creación de componentes de la forma más reutilizable posible.
+- Tests unitarios.
+- Tests End-to-End.
 
-## Opcionalmente puedes
-- hacer uso de la librería externa que desee
-- plantear cualquier otra funcionalidad añadida que desee
-- añadir comentarios en el código
+## Opcionalmente se puede
+- Hacer uso de la librería externa que desee.
+- Plantear cualquier otra funcionalidad añadida que desee.
+- Añadir comentarios en el código.

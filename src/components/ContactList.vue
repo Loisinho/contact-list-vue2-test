@@ -3,11 +3,13 @@
     <!-- Your solution here -->
   </div>
 </template>
+
 <script>
 export default {
   name: "ContactList",
-  data: vm => ({}),
-  props: {}
+  props: {},
+  data: () => ({})
 };
 </script>
+
 <style scoped></style>
