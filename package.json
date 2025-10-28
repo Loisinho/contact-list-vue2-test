@@ -6,7 +6,9 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "test:unit": "jest"
+    "test:unit": "jest",
+    "test:e2e": "cypress open",
+    "test:e2e:run": "cypress run"
   },
   "dependencies": {
     "vue": "^2.5.22"
@@ -21,6 +23,7 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^27.5.1",
+    "cypress": "^12.17.2",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0",
     "jest": "^27.5.1",
@@ -36,7 +39,8 @@
     "root": true,
     "env": {
       "node": true,
-      "jest": true
+      "jest": true,
+      "cypress": true
     },
     "extends": [
       "plugin:vue/recommended",
