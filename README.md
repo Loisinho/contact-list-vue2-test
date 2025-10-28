@@ -35,8 +35,8 @@ npm run lint
 Crear una aplicación básica de gestión de contactos.
 
 **Servicio para obtener los contactos:**
-- [ ] Importar el array inicial de contactos de `./assets/contacts.json`.
-- [ ] Pasar contactos al componente de ContactList como una propiedad.
+- [x] Importar el array inicial de contactos de `./assets/contacts.json`.
+- [x] Pasar contactos al componente de ContactList como una propiedad.
 **Visualización de los contactos:**
 - [ ] Mostrar listado de usuarios en su totalidad.
 - [ ] Ordenar inicialmente los contactos por el key `lastname` de forma ascendente.

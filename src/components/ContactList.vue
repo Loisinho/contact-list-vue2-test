@@ -1,15 +1,20 @@
 <template>
   <div>
-    <!-- Your solution here -->
+    {{ contacts }}
   </div>
 </template>
 
 <script>
 export default {
   name: "ContactList",
-  props: {},
+  props: {
+    contacts: {
+      type: Array,
+      required: true
+    }
+  },
   data: () => ({})
 };
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped></style>

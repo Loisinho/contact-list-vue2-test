@@ -1,28 +1,26 @@
 <template>
   <div id="app">
-    <ContactList />
+    <TheHeader class="app__header" />
+    <MainContent class="app__content" />
+    <TheFooter class="app__footer" />
   </div>
 </template>
 
 <script>
-import ContactList from "@/components/ContactList";
+import "@/assets/scss/app.scss";
+import TheHeader from "@/components/TheHeader";
+import MainContent from "@/components/MainContent";
+import TheFooter from "@/components/TheFooter";
 
 export default {
   name: "App",
   components: {
-    ContactList
+    TheHeader,
+    MainContent,
+    TheFooter
   },
   data: () => ({})
 };
 </script>
 
-<style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style lang="scss"></style>
