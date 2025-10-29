@@ -2,6 +2,7 @@
   <main>
     <ContactList
       v-if="!msg.text"
+      :color="color"
       :contacts="contacts"
     />
     <div
@@ -23,6 +24,13 @@ export default {
     ContactList
   },
 
+  props: {
+    color: {
+      type: String,
+      default: "indigo"
+    }
+  },
+
   data: () => ({
     contacts: [],
     msg: { text: "", type: "info" }
@@ -38,4 +46,22 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+main.app__content {
+  flex: 1;
+  padding: var(--app-gap);
+
+  & > .app__msg {
+    width: 80%;
+    padding: var(--app-padding);
+    margin: calc(var(--app-gap) * 4) 10%;
+    border: 1px solid var(--color-border);
+    border-radius: var(--app-radius);
+
+    &.app__msg--error {
+      color: var(--color-error);
+      border-color: var(--color-error);
+    }
+  }
+}
+</style>

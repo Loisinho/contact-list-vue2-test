@@ -31,6 +31,22 @@ npm run build
 npm run lint
 ```
 
+### Unit Tests (Jest)
+
+```sh
+npm run test:unit
+```
+
+### E2E Tests (Cypress)
+
+```sh
+npm run test:e2e
+```
+
+```sh
+npm run test:e2e:run
+```
+
 ## Desarrollo
 Crear una aplicación básica de gestión de contactos.
 

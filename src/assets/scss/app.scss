@@ -1,6 +1,6 @@
 :root {
 	--app-font-size: 16px; /* 1rem = 16px */
-	--app-gap: 1rem;
+	--app-gap: 2rem;
 	--app-padding: .5rem;
 	--app-radius: .2rem;
 
@@ -26,42 +26,10 @@
 
 html {
   font-size: var(--app-font-size);
+	min-height: 100vh;
 }
 
 body {
 	background: var(--color-background);
-	padding: 0 var(--app-gap);
-}
-
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: var(--color-text);
-  margin-top: calc(var(--app-gap) * 4);
-
-  & > main.app__content {
-		padding: var(--app-gap);
-
-		& > .app__msg {
-			width: 80%;
-			padding: var(--app-padding);
-			margin: calc(var(--app-gap) * 8) 10%;
-			border: 1px solid var(--color-border);
-			border-radius: var(--app-radius);
-
-			&.app__msg--error {
-				color: var(--color-error);
-				border-color: var(--color-error);
-			}
-		}
-	}
-
-	& > footer.app__footer {
-		position: fixed;
-		bottom: 0;
-		width: 100%;
-		text-align: center;
-	}
+	min-height: 100vh;
 }
