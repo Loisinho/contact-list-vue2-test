@@ -18,9 +18,7 @@ export default {
       type: String,
       default: "indigo"
     }
-  },
-
-  data: () => ({})
+  }
 };
 </script>
 

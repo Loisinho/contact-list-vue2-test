@@ -1,12 +1,17 @@
 <template>
   <main>
-    <ContactList
-      v-if="!msg.text"
-      :color="color"
-      :contacts="contacts"
-      :sort-options="sortOptions"
-      @sort="sortContacts"
-    />
+    <div v-if="!msg.text">
+      <TheToolbar
+        :color="color"
+        @search="searchContacts"
+      />
+      <ContactList
+        :color="color"
+        :contacts="filteredContacts"
+        :sort-options="sortOptions"
+        @sort="sortContacts"
+      />
+    </div>
     <div
       v-else
       :class="`app__msg app__msg--${msg.type}`"
@@ -18,12 +23,15 @@
 
 <script>
 import ContactList from "@/components/ContactList";
+import TheToolbar from "@/components/TheToolbar";
 import contacts from "@/services/contacts.js";
 
 export default {
-  name: "App",
+  name: "MainContent",
+
   components: {
-    ContactList
+    ContactList,
+    TheToolbar
   },
 
   props: {
@@ -36,8 +44,27 @@ export default {
   data: () => ({
     contacts: [],
     msg: { text: "", type: "info" },
+    searchText: "",
     sortOptions: { field: "lastname", direction: "asc" }
   }),
+
+  computed: {
+    filteredContacts() {
+      if (!this.searchText) {
+        return this.contacts;
+      }
+
+      const text = this.searchText.toLowerCase();
+      return this.contacts.filter((user) => {
+        return (
+          user.firstname.toLowerCase().includes(text) ||
+          user.lastname.toLowerCase().includes(text) ||
+          user.email.some(e => e.toLowerCase().includes(text)) ||
+          user.phoneNumber.some(p => p.includes(text))
+        );
+      });
+    }
+  },
 
   async created() {
     try {
@@ -49,11 +76,16 @@ export default {
   },
 
   methods: {
+    searchContacts(text = "") {
+      this.searchText = text;
+    },
+
     sortContacts({ field = "", direction = "desc" }) {
       this.contacts.sort((a, b) => {
         const result = a[field].localeCompare(b[field]);
-        return direction === 'desc' ? result : -result;
+        return direction === "desc" ? result : -result;
       });
+
       this.sortOptions = { field, direction };
     }
   }

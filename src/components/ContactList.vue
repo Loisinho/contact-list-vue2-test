@@ -116,15 +116,13 @@ export default {
     }
   },
 
-  data: () => ({}),
-
   methods: {
     editContact(id) {
       return id;
     },
 
     sortContacts(field="", direction="desc") {
-      this.$emit('sort', { field, direction });
+      this.$emit("sort", { field, direction });
     }
   }
 };
