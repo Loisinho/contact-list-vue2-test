@@ -5,7 +5,8 @@ import {
   ChevronUpIcon,
   PencilIcon,
   SearchIcon,
-  UserAddIcon
+  UserAddIcon,
+  XIcon
 } from "@vue-hero-icons/outline";
 
 Vue.component("ChevronDownIcon", ChevronDownIcon);
@@ -13,6 +14,7 @@ Vue.component("ChevronUpIcon", ChevronUpIcon);
 Vue.component("PencilIcon", PencilIcon);
 Vue.component("SearchIcon", SearchIcon);
 Vue.component("UserAddIcon", UserAddIcon);
+Vue.component("XIcon", XIcon);
 
 Vue.config.productionTip = false;
 

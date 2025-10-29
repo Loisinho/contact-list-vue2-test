@@ -9,7 +9,7 @@
                 class="flex items-center justify-between font-semibold cursor-pointer"
                 @click="sortContacts('firstname', sortOptions.direction === 'asc'? 'desc': 'asc')"
               >
-                Firstname
+                Name
                 <ChevronUpIcon
                   v-if="sortOptions.field === 'firstname' && sortOptions.direction === 'asc'"
                   class="contactslist__sort contactslist__sort--active"
@@ -28,7 +28,7 @@
                 class="flex items-center justify-between font-semibold cursor-pointer"
                 @click="sortContacts('lastname', sortOptions.direction === 'asc'? 'desc': 'asc')"
               >
-                Lastname
+                Last Name
                 <ChevronUpIcon
                   v-if="sortOptions.field === 'lastname' && sortOptions.direction === 'asc'"
                   class="contactslist__sort contactslist__sort--active"
@@ -87,7 +87,7 @@
                 :class="`text-${color}-600 hover:text-${color}-300 transition cursor-pointer`"
                 size="1.4x"
                 title="Edit"
-                @click="editContact(contact.id)"
+                @click="$emit('edit', { show: true, title: 'Edit contact', data: contact })"
               />
             </td>
           </tr>
@@ -117,10 +117,6 @@ export default {
   },
 
   methods: {
-    editContact(id) {
-      return id;
-    },
-
     sortContacts(field="", direction="desc") {
       this.$emit("sort", { field, direction });
     }
@@ -131,7 +127,7 @@ export default {
 <style lang="scss" scoped>
 .contactslist {
   .contactslist__sort {
-    opacity: 40%;
+    opacity: .4;
 
     &.contactslist__sort--active {
       opacity: initial;

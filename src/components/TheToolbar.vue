@@ -5,6 +5,7 @@
         <input
           autofocus
           type="text"
+          name="search"
           title="Search contact"
           placeholder="Search contact.."
           class="w-full border rounded-full border-gray-200 py-2 pr-4 pl-10 placeholder-gray-400 focus:outline-none focus:ring-2"
@@ -20,8 +21,9 @@
 
       <button 
         class="w-full sm:w-auto text-white px-4 py-2 border rounded-full border-gray-200 transition cursor-pointer"
-        :class="`bg-${color}-600 hover:bg-${color}-300 hover:text-${color}-600`"
+        :class="`bg-${color}-600 hover:bg-${color}-300`"
         title="Add new contact"
+        @click="$emit('create', { show: true, title: 'Add new contact', data: null })"
       >
         <UserAddIcon size="1.2x" />
       </button>

@@ -4,12 +4,23 @@
       <TheToolbar
         :color="color"
         @search="searchContacts"
+        @create="handleModal"
       />
       <ContactList
         :color="color"
         :contacts="filteredContacts"
         :sort-options="sortOptions"
         @sort="sortContacts"
+        @edit="handleModal"
+      />
+      <ContactModal
+        v-if="modal.show"
+        :color="color"
+        :show="modal.show"
+        :title="modal.title"
+        :contact-data="modal.data"
+        @close="handleModal"
+        @save="saveContact"
       />
     </div>
     <div
@@ -23,6 +34,7 @@
 
 <script>
 import ContactList from "@/components/ContactList";
+import ContactModal from "@/components/ContactModal";
 import TheToolbar from "@/components/TheToolbar";
 import contacts from "@/services/contacts.js";
 
@@ -31,6 +43,7 @@ export default {
 
   components: {
     ContactList,
+    ContactModal,
     TheToolbar
   },
 
@@ -43,9 +56,20 @@ export default {
 
   data: () => ({
     contacts: [],
-    msg: { text: "", type: "info" },
+    msg: {
+      text: "",
+      type: "info"
+    },
     searchText: "",
-    sortOptions: { field: "lastname", direction: "asc" }
+    modal: {
+      show: false,
+      title: "Add new contact",
+      data: {}
+    },
+    sortOptions: {
+      field: "lastname",
+      direction: "asc"
+    }
   }),
 
   computed: {
@@ -78,6 +102,30 @@ export default {
   methods: {
     searchContacts(text = "") {
       this.searchText = text;
+    },
+
+    handleModal({ show = false, title = "Add new contact", data = null }) {
+      this.modal = {
+        show,
+        title,
+        data
+      };
+    },
+
+    saveContact(contactData) {
+      if (!contactData.id) {
+        contactData.id = this.contacts.length
+          ? Math.max(...this.contacts.map((c) => c.id)) + 1
+          : 1;
+        this.contacts.push(contactData);
+      } else {
+        const index = this.contacts.findIndex((c) => c.id === contactData.id);
+        if (index !== -1) {
+          this.contacts.splice(index, 1, { ...this.contacts[index], ...contactData });
+        }
+      }
+
+      this.modal.show = false;
     },
 
     sortContacts({ field = "", direction = "desc" }) {
