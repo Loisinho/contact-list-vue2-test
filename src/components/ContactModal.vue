@@ -38,27 +38,55 @@
           class="border rounded-full border-gray-200 bg-gray-100 px-4 py-2 focus:outline-none focus:ring-2"
           :class="`focus:ring-${color}-600`"
         >
-        <input
-          v-model="newContactData.phoneNumber[0]"
-          type="text"
-          name="phoneNumber"
-          placeholder="Phone Number"
-          title="Phone Number"
-          class="border rounded-full border-gray-200 bg-gray-100 px-4 py-2 focus:outline-none focus:ring-2"
-          :class="`focus:ring-${color}-600`"
+        <div
+          v-for="(phoneNumber, index) in newContactData.phoneNumber"
+          :key="`phone${index}`"
+          class="flex items-center gap-1"
         >
-        <input
-          v-model="newContactData.email[0]"
-          type="email"
-          name="email"
-          placeholder="Email"
-          title="Email"
-          class="border rounded-full px-4 py-2 focus:outline-none focus:ring-2"
-          :class="[
-            `focus:ring-${color}-600`,
-            emailError ? 'border-red-600 bg-red-100' : 'border-gray-200 bg-gray-100'
-          ]"
+          <input
+            v-model="newContactData.phoneNumber[index]"
+            type="text"
+            :name="`phoneNumber${index}`"
+            placeholder="Phone Number"
+            title="Phone Number"
+            class="w-full border rounded-full border-gray-200 bg-gray-100 px-4 py-2 focus:outline-none focus:ring-2"
+            :class="`focus:ring-${color}-600`"
+          >
+          <PlusIcon
+            v-if="newContactData.phoneNumber.length < 2"
+            class="cursor-pointer"
+            :class="`text-${color}-600 hover:text-${color}-300`"
+            size="1.5x"
+            @click="addPhoneInput"
+          />
+        </div>
+        <div
+          v-for="(email, index) in newContactData.email"
+          :key="`email${index}`"
+          class="flex items-center gap-1"
         >
+          <input
+            v-model="newContactData.email[index]"
+            type="email"
+            :name="`email${index}`"
+            placeholder="Email"
+            title="Email"
+            class="w-full border rounded-full px-4 py-2 focus:outline-none focus:ring-2"
+            :class="[
+              `focus:ring-${color}-600`,
+              emailErrors.length < index + 1 || emailErrors[index]
+                ? 'border-gray-200 bg-gray-100'
+                : 'border-red-600 bg-red-100'
+            ]"
+          >
+          <PlusIcon
+            v-if="newContactData.email.length < 2"
+            class="cursor-pointer"
+            :class="`text-${color}-600 hover:text-${color}-300`"
+            size="1.5x"
+            @click="addEmailInput"
+          />
+        </div>
 
         <div class="flex justify-end gap-3 mt-2">
           <button
@@ -106,13 +134,13 @@ export default {
   },
 
 	data: () => ({
-		emailError: "",
+		emailErrors: [],
 		newContactData: {
 			id: 0,
 			firstname: "",
 			lastname: "",
-			phoneNumber: [],
-			email: []
+			phoneNumber: [""],
+			email: [""]
 		}
 	}),
 
@@ -123,23 +151,33 @@ export default {
 	},
 
 	methods: {
+		addPhoneInput() {
+			if (this.newContactData.phoneNumber.length < 2) {
+				this.newContactData.phoneNumber.push("");
+			}
+		},
+
+		addEmailInput() {
+			if (this.newContactData.email.length < 2) {
+				this.newContactData.email.push("");
+			}
+		},
+
 		save() {
-			this.validateEmail();
-			if (!this.emailError) {
+			if (this.validateEmail().every((e) => e)) {
 				this.$emit('save', this.newContactData);
 			}
 		},
 
 		validateEmail() {
 			const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (
-				this.newContactData.email[0] &&
-				!pattern.test(this.newContactData.email[0])
-			) {
-        this.emailError = 'Email is not valid';
-      } else {
-        this.emailError = '';
-      }
+			this.emailErrors = this.newContactData.email.map((e) => {
+				if (e) {
+					return pattern.test(e);
+				}
+				return true;
+			});
+			return this.emailErrors;
 		}
 	}
 }

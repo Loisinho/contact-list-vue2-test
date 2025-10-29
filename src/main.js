@@ -4,6 +4,7 @@ import {
   ChevronDownIcon,
   ChevronUpIcon,
   PencilIcon,
+  PlusIcon,
   SearchIcon,
   UserAddIcon,
   XIcon
@@ -12,6 +13,7 @@ import {
 Vue.component("ChevronDownIcon", ChevronDownIcon);
 Vue.component("ChevronUpIcon", ChevronUpIcon);
 Vue.component("PencilIcon", PencilIcon);
+Vue.component("PlusIcon", PlusIcon);
 Vue.component("SearchIcon", SearchIcon);
 Vue.component("UserAddIcon", UserAddIcon);
 Vue.component("XIcon", XIcon);

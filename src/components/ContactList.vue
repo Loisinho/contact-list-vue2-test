@@ -68,16 +68,16 @@
             </td>
             <td class="p-3">
               <div
-                v-for="phoneNumber in contact.phoneNumber"
-                :key="phoneNumber"
+                v-for="(phoneNumber, index) in contact.phoneNumber"
+                :key="`phoneNumber${index}`"
               >
                 {{ phoneNumber }}
               </div>
             </td>
             <td class="p-3">
               <div
-                v-for="email in contact.email"
-                :key="email"
+                v-for="(email, index) in contact.email"
+                :key="`email${index}`"
               >
                 {{ email }}
               </div>

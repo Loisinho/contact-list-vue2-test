@@ -61,7 +61,7 @@ Crear una aplicación básica de gestión de contactos.
 - [x] Iniciar la app con el campo de búsqueda en autofocus.
 **Crear y editar contactos:**
 - [x] Implementar la creación y actualización de contactos nuevos (validar el campo `email`).
-- [ ] Los campos `phone` y `email` serán un array que podrá contener N items.
+- [x] Los campos `phone` y `email` serán un array que podrá contener N items.
 
 ## Qué se va a valorar
 - Limpieza del código y organización.
