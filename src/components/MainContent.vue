@@ -4,6 +4,8 @@
       v-if="!msg.text"
       :color="color"
       :contacts="contacts"
+      :sort-options="sortOptions"
+      @sort="sortContacts"
     />
     <div
       v-else
@@ -33,14 +35,26 @@ export default {
 
   data: () => ({
     contacts: [],
-    msg: { text: "", type: "info" }
+    msg: { text: "", type: "info" },
+    sortOptions: { field: "lastname", direction: "asc" }
   }),
 
   async created() {
     try {
       this.contacts = await contacts.getData();
+      this.sortContacts(this.sortOptions);
     } catch (error) {
       this.msg = { text: error.message, type: "error" };
+    }
+  },
+
+  methods: {
+    sortContacts({ field = "", direction = "desc" }) {
+      this.contacts.sort((a, b) => {
+        const result = a[field].localeCompare(b[field]);
+        return direction === 'desc' ? result : -result;
+      });
+      this.sortOptions = { field, direction };
     }
   }
 };

@@ -54,8 +54,8 @@ Crear una aplicación básica de gestión de contactos.
 - [x] Importar el array inicial de contactos de `./assets/contacts.json`.
 - [x] Pasar contactos al componente de ContactList como una propiedad.
 **Visualización de los contactos:**
-- [ ] Mostrar listado de usuarios en su totalidad.
-- [ ] Ordenar inicialmente los contactos por el key `lastname` de forma ascendente.
+- [x] Mostrar listado de usuarios en su totalidad.
+- [x] Ordenar inicialmente los contactos por el key `lastname` de forma ascendente.
 **Buscador:**
 - [ ] Añadir un campo de búsqueda (input text) para filtrar el listado de contactos por `name`, `lastname`, `email` y `phone`.
 - [ ] Iniciar la app con el campo de búsqueda en autofocus.
