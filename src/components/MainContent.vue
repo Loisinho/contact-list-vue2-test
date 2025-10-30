@@ -79,12 +79,12 @@ export default {
       }
 
       const text = this.searchText.toLowerCase();
-      return this.contacts.filter((user) => {
+      return this.contacts.filter((contact) => {
         return (
-          user.firstname.toLowerCase().includes(text) ||
-          user.lastname.toLowerCase().includes(text) ||
-          user.email.some(e => e.toLowerCase().includes(text)) ||
-          user.phoneNumber.some(p => p.includes(text))
+          contact.firstname.toLowerCase().includes(text) ||
+          contact.lastname.toLowerCase().includes(text) ||
+          contact.email.some(e => e.toLowerCase().includes(text)) ||
+          contact.phoneNumber.some(p => p.includes(text))
         );
       });
     }
