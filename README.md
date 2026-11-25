@@ -1,3 +1,8 @@
+# Contact List Vue 2 Test
+Technical test for a basic contact management application
+
+*Some information and details about the project are in Spanish*
+
 ## Ramas del proyecto
 
 - [Rama base sin cambios (main)](https://github.com/Loisinho/klikin-contact-list-test/tree/main)
